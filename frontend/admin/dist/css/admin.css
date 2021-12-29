@@ -1,0 +1,9 @@
+@media screen and (min-width: 800px) {
+    .jzonAdminCard {
+		margin-bottom: 20px;
+	}
+}
+
+.jzonAdminTitle {
+	font-weight: bold;
+}

@@ -1,0 +1,56 @@
+RewriteEngine on
+
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+Options All -Indexes
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>
+
+ErrorDocument 400 /pages/error_docs/400.php
+ErrorDocument 401 /pages/error_docs/401.php
+ErrorDocument 403 /pages/error_docs/403.php
+ErrorDocument 404 /pages/error_docs/404.php
+ErrorDocument 500 /pages/error_docs/500.php
+ErrorDocument 503 /pages/error_docs/503.php
+
+
+RewriteRule ^maintenance$ pages/error_docs/503.php [L]
+RewriteRule ^home$ pages/users/home.php [L]
+RewriteRule ^auth/login$ pages/users/auth/login.php [L]
+RewriteRule ^auth/create$ pages/users/auth/create.php [L]
+RewriteRule ^sorry/banned$ pages/users/auth/banned.php [L]
+RewriteRule ^auth/logout$ pages/users/auth/logout.php [L]
+RewriteRule ^recharge/banking$ pages/users/recharge/banking.php [L]
+RewriteRule ^recharge/card$ pages/users/recharge/card.php [L]
+RewriteRule ^personal/log$ pages/users/personal/log.php [L]
+RewriteRule ^personal/information$ pages/users/personal/information.php [L]
+RewriteRule ^service/(.+) pages/users/view/service.php?slug=$1 [L]
+
+RewriteRule ^support/create$ pages/users/support/create.php [L]
+RewriteRule ^support/list$ pages/users/support/list.php [L]
+RewriteRule ^support/([A-Za-z0-9-]+) pages/users/support/view.php?code=$1 [L]
+
+
+RewriteRule ^admin/login$ pages/admin/auth/login.php [L]
+RewriteRule ^admin$ pages/admin/index.php [L]
+RewriteRule ^admin/manage/order/(.+) pages/admin/manage/order.php?slug=$1 [L]
+RewriteRule ^admin/manage/member$ pages/admin/manage/member.php [L]
+RewriteRule ^admin/manage/post$ pages/admin/manage/post.php [L]
+RewriteRule ^admin/manage/service$ pages/admin/manage/service.php [L]
+RewriteRule ^admin/manage/server$ pages/admin/manage/server.php [L]
+RewriteRule ^admin/manage/recharge$ pages/admin/manage/recharge.php [L]
+RewriteRule ^admin/setting/nofication$ pages/admin/setting/nofication.php [L]
+RewriteRule ^admin/setting/website$ pages/admin/setting/website.php [L]
+RewriteRule ^admin/setting/landing_page$ pages/admin/setting/landing_page.php [L]
+RewriteRule ^admin/history/recharge/card$ pages/admin/history/recharge/card.php [L]
+RewriteRule ^admin/history/recharge/zalo-pay$ pages/admin/history/recharge/zalo-pay.php [L]
+RewriteRule ^admin/history/recharge/momo$ pages/admin/history/recharge/momo.php [L]
+RewriteRule ^admin/manage/service-child$ pages/admin/manage/service-child.php [L]
+RewriteRule ^admin/manage/support$ pages/admin/manage/support/list.php [L]
+RewriteRule ^admin/manage/support/([A-Za-z0-9-]+) pages/admin/manage/support/view.php?code=$1 [L]
+RewriteRule ^admin/add/support/problem$ pages/admin/add/support/problem.php [L]
+RewriteRule ^admin/add/message-suggest$ pages/admin/add/message-suggest.php [L]
+RewriteRule ^admin/edit/service-child/(.+) pages/admin/edit/service-child.php?slug=$1 [L]
